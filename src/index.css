@@ -1,0 +1,175 @@
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+
+:root {
+  --mainColor: #012b64;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.home-background {
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
+  height: auto;
+  color: white;
+}
+
+.home-content {
+  text-align: center;
+}
+
+.nav-link {
+  cursor: pointer;
+  font-weight: 500;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-duration: 200ms;
+}
+
+.nav-link:hover {
+  color: #d1d5db; /* Tailwind's text-gray-300 */
+  border-color: #fff; /* Tailwind's border-white */
+}
+
+.active {
+  color: #22d3ee; /* Tailwind's text-cyan-400 */
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.typewriter {
+  overflow: hidden;
+  margin-top: 0;
+  margin-inline: auto;
+  white-space: nowrap;
+  animation: typing 3s steps(26, end) forwards, enableWrap 0s 3s forwards;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes enableWrap {
+  to {
+    white-space: normal;
+  }
+}
+
+.curved-bg {
+  --c: 85; /* default curve (desktop/tablet) */
+
+  width: 100%;
+  aspect-ratio: 3/2;
+  background: var(--mainColor);
+  mask: radial-gradient(
+    calc(var(--c) * 1%) 100% at 50% calc(100% + 100% * cos(asin(50 / var(--c)))),
+    #0000 calc(100% - 1px),
+    #000
+  );
+  clip-path: ellipse(calc(var(--c) * 1%) 100% at bottom);
+}
+
+/* Mobile: 0–640px (Tailwind's sm breakpoint) */
+@media (max-width: 768px) {
+  .curved-bg {
+    --c: 120; /* make curve flatter */
+  }
+}
+
+.curved-bg-flatter {
+  --c: 70;
+  width: 100%;
+  aspect-ratio: 5/1;
+  background: var(--mainColor);
+
+  mask: radial-gradient(
+    calc(var(--c) * 1%) 100% at 50% calc(100% + 100% * cos(asin(50 / var(--c)))),
+    #0000 calc(100% - 1px),
+    #000
+  );
+  clip-path: ellipse(calc(var(--c) * 1%) 100% at bottom);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .curved-bg-flatter {
+    height: 180px; /* shorter on phones */
+    --c: 100; /* flatter curve */
+  }
+}
+
+.curved-edge {
+  --c: 200px; /* control the curvature (works with percentage) */
+  height: 20rem;
+  aspect-ratio: 3/2;
+  /* you can also update the 60%  */
+  mask: radial-gradient(60% var(--c) at top, #0000 calc(100% - 1px), #000);
+  background: var(--mainColor);
+}
+
+@media (max-width: 768px) {
+  .curved-edge {
+    --c: 100px; /* make curve flatter */
+    height: 12rem;
+  }
+}
+
+.curved-edge-reverse {
+  --c: 200px; /* control the curvature (works with percentage) */
+  height: 20rem;
+  aspect-ratio: 3/2;
+  /* you can also update the 60%  */
+  mask: radial-gradient(60% var(--c) at bottom, #0000 calc(100% - 1px), #000);
+  /* background: var(--mainColor); */
+  background: var(--mainColor); /* Tailwind's gray-100 */
+}
+
+@media (max-width: 768px) {
+  .curved-edge-reverse {
+    --c: 100px; /* make curve flatter */
+    height: 12rem;
+  }
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.force-main-color * {
+  color: var(--mainColor);
+}
+
+.force-main-color .spinner {
+  border-left-color: var(--mainColor);
+  border-right-color: var(--mainColor);
+  border-bottom-color: var(--mainColor);
+}
